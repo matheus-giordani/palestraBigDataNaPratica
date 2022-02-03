@@ -25,6 +25,17 @@ services:
     volumes:
       - /nifi:/data
 
+  web:
+    container_name: server-api-flask
+    hostname: server-api-flask
+    build: api-consulta-b3/
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api-consulta-b3:/code
+    networks:
+      - pipeline-data-net
+
 networks:
   pipeline-data-net:
     driver: bridge
